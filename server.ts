@@ -5,8 +5,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get("/health", (_, res) => res.send("OK"));
+const PORT = process.env.PORT || 3000;
 
-app.listen(5000, () => {
-  console.log("Backend running on port 5000");
+app.get("/health", (_, res) => {
+  res.json({ status: "ok" });
+});
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Backend running on port ${PORT}`);
 });
